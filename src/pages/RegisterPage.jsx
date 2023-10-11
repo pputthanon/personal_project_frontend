@@ -1,3 +1,9 @@
+import RegisterForm from "../auth/RegisterForm";
+
 export default function RegisterPage() {
-  return <div>RegisterPage</div>;
+  return (
+    <div>
+      <RegisterForm />
+    </div>
+  );
 }
