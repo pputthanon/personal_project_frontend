@@ -9,7 +9,7 @@ import RedirectIfAuthenticate from "../features/auth/RedirectIfAuthenticate";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: (
       <RedirectIfAuthenticate>
         <Layout />
@@ -24,26 +24,27 @@ const router = createBrowserRouter([
         path: "register",
         element: <RegisterPage />,
       },
-      {
-        path: "",
-        element: <HomePage />,
-      },
+      // {
+      //   path: "",
+      //   element: <HomePage />,
+      // },
+      // { path: "cart", element: <CartPage /> },
     ],
   },
-  // {
-  //   path: "/",
-  //   element: (
-  //     <Authenticated>
-  //       <Layout />
-  //     </Authenticated>
-  //   ),
-  //   children: [
-  //     { path: "", element: <HomePage /> },
-  //     { path: "register", element: <RegisterPage /> },
-  //     // { path: "login", element: <LoginPage /> },
-  //     { path: "cart", element: <CartPage /> },
-  //   ],
-  // },
+  {
+    path: "/",
+    element: (
+      <Authenticated>
+        <Layout />
+      </Authenticated>
+    ),
+    children: [
+      { path: "homepage", element: <HomePage /> },
+      // { path: "register", element: <RegisterPage /> },
+      // { path: "login", element: <LoginPage /> },
+      { path: "cart", element: <CartPage /> },
+    ],
+  },
 ]);
 
 export default function Route() {

@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className=" grid grid-cols-2 py-4 bg-orange-300 shadow-lg top-0 z-30 w-screen ">
       <div>
-        <Link to="/">Onmyway</Link>
+        <Link to="/homepage">Onmyway</Link>
       </div>
       <div className="flex justify-end gap-4 ">
         <Link to="/cart">
