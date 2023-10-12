@@ -4,6 +4,7 @@ import RegisterInput from "./RegisterInput";
 import Joi from "joi";
 import InputErrorMessage from "./InputErrorMessage";
 import { useAuth } from "../../hooks/use-auth";
+import { useNavigate } from "react-router-dom";
 
 const registerSchema = Joi.object({
   firstName: Joi.string().trim().required(),
@@ -38,7 +39,8 @@ export default function RegisterForm() {
     confirmPassword: "",
   });
   const [error, setError] = useState({});
-  const { register } = useAuth();
+  const { register, authUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -57,6 +59,9 @@ export default function RegisterForm() {
       console.log(err);
       toast.error(err.response?.data.message);
     });
+    //ใช้use navigate navigateไปหน้าloginซึ่งก่อนจะนาวิเกตบอกยูเซ้อหน่อยว่าสมัตรสำเร็จ
+    toast.success("Your account has been created!");
+    navigate("/login");
   };
 
   return (
