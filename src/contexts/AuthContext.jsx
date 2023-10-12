@@ -18,7 +18,15 @@ export default function AuthContextProvider({ children }) {
     setAuthUser(res.data.user);
   };
 
+  const login = async (credential) => {
+    const res = await axios.post("/auth/login", credential);
+    addAccessToken(res.data.accessToken);
+    setAuthUser(res.data.user);
+  };
+
   return (
-    <AuthContext.Provider value={{ register }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ register, login }}>
+      {children}
+    </AuthContext.Provider>
   );
 }

@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import RegisterInput from "./RegisterInput";
 import Joi from "joi";
 import InputErrorMessage from "./InputErrorMessage";
-import { useAuth } from "../hooks/use-auth";
+import { useAuth } from "../../hooks/use-auth";
 
 const registerSchema = Joi.object({
   firstName: Joi.string().trim().required(),
@@ -61,13 +62,13 @@ export default function RegisterForm() {
   return (
     <div className="flex justify-center sticky">
       <form
-        className="bg-gray-200 grid grid-cols-2 gap-x-3 gap-y-4 border rounded-lg w-1/2 shadow "
+        className="bg-white grid grid-cols-2 gap-x-3 gap-y-4 border border-gray-200 rounded-2xl w-1/2 shadow p-10"
         onSubmit={handleSubmitForm}
       >
-        <div className="flex justify-center items-center col-span-2 py-3 font-semibold text-4xl text-gray-700">
+        <div className="flex justify-center items-center col-span-2 font-semibold text-4xl text-gray-600">
           Register
         </div>
-        <hr className="col-span-2 border border-white" />
+        <hr className="col-span-2 border border-gray-200 " />
         <div className="m-1">
           <RegisterInput
             placeholder="First Name"
@@ -122,8 +123,8 @@ export default function RegisterForm() {
             <InputErrorMessage message={error.confirmPassword} />
           )}
         </div>
-        <div className="mx-auto col-span-full pb-4">
-          <button className="bg-orange-300 rounded-lg text-gray-700 px-20 py-2 font-semibold text-xl">
+        <div className="flex justify-center items-center col-span-full">
+          <button className="bg-green-400 rounded-lg text-gray-600 px-20 py-2 font-semibold text-xl mt-4">
             Sign up
           </button>
         </div>
