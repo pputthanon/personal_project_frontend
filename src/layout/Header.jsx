@@ -7,9 +7,16 @@ export default function Header() {
         <Link to="/">Onmyway</Link>
       </div>
       <div className="flex justify-end gap-4 ">
+        {/* <Link to=''> */}
+
         <span>Cart</span>
-        <span>Login</span>
-        <span>Register</span>
+        {/* </Link> */}
+        <Link to="/login">
+          <span>Login</span>
+        </Link>
+        <Link to="/register">
+          <span>Register</span>
+        </Link>
         <span>Dropdown</span>
       </div>
     </header>

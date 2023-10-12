@@ -2,6 +2,7 @@ import { useState } from "react";
 import RegisterInput from "./RegisterInput";
 import Joi from "joi";
 import InputErrorMessage from "./InputErrorMessage";
+import { useAuth } from "../hooks/use-auth";
 
 const registerSchema = Joi.object({
   firstName: Joi.string().trim().required(),
@@ -17,6 +18,14 @@ const registerSchema = Joi.object({
 const validateRegister = (input) => {
   const { error } = registerSchema.validate(input, { abortEarly: false });
   console.dir(error);
+  if (error) {
+    const result = error.details.reduce((acc, el) => {
+      const { message, path } = el;
+      acc[path[0]] = message;
+      return acc;
+    }, {});
+    return result;
+  }
 };
 
 export default function RegisterForm() {
@@ -28,15 +37,33 @@ export default function RegisterForm() {
     confirmPassword: "",
   });
   const [error, setError] = useState({});
+  const { register } = useAuth();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
     // console.log(e.target.value);
   };
 
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    const validationError = validateRegister(input);
+    if (validationError) {
+      return setError(validationError);
+    }
+
+    setError({});
+    register(input).catch((err) => {
+      console.log(err);
+      toast.error(err.response?.data.message);
+    });
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
-      <form className="bg-gray-200 grid grid-cols-2 gap-x-3 gap-y-4 border rounded-lg w-1/2 shadow ">
+      <form
+        className="bg-gray-200 grid grid-cols-2 gap-x-3 gap-y-4 border rounded-lg w-1/2 shadow "
+        onSubmit={handleSubmitForm}
+      >
         <div className="flex justify-center items-center col-span-2 py-3 font-semibold text-4xl text-gray-700">
           Register
         </div>
