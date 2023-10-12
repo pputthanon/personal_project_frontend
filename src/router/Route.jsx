@@ -24,11 +24,6 @@ const router = createBrowserRouter([
         path: "register",
         element: <RegisterPage />,
       },
-      // {
-      //   path: "",
-      //   element: <HomePage />,
-      // },
-      // { path: "cart", element: <CartPage /> },
     ],
   },
   {
@@ -40,8 +35,6 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: "homepage", element: <HomePage /> },
-      // { path: "register", element: <RegisterPage /> },
-      // { path: "login", element: <LoginPage /> },
       { path: "cart", element: <CartPage /> },
     ],
   },

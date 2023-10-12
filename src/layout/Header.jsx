@@ -5,7 +5,7 @@ export default function Header() {
   const { authUser } = useAuth();
 
   return (
-    <header className=" grid grid-cols-2 py-4 bg-orange-300 shadow-lg top-0 z-30 w-screen ">
+    <header className=" grid grid-cols-2 py-4 bg-orange-300 shadow-lg z-30">
       <div>
         <Link to="/homepage">Onmyway</Link>
       </div>
