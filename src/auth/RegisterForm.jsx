@@ -59,7 +59,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center sticky">
       <form
         className="bg-gray-200 grid grid-cols-2 gap-x-3 gap-y-4 border rounded-lg w-1/2 shadow "
         onSubmit={handleSubmitForm}

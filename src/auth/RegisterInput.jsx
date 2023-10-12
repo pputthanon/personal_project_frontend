@@ -16,7 +16,7 @@ export default function RegisterInput({
       ${
         hasError
           ? "border-red-500 focus:ring-red-300"
-          : " focus:ring-blue-300 focus:border-blue-500 border-gray-300"
+          : " focus:ring-blue-300 focus:border-orange-500 border-gray-300"
       }
       `}
         value={value}
