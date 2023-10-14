@@ -42,8 +42,15 @@ export default function AuthContextProvider({ children }) {
     setAuthUser(res.data.user);
   };
 
+  const logout = () => {
+    removeAccessToken();
+    setAuthUser(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ register, login, loading, authUser }}>
+    <AuthContext.Provider
+      value={{ register, login, logout, loading, authUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

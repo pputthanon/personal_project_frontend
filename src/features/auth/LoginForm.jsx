@@ -26,7 +26,7 @@ export default function LoginForm() {
         onSubmit={handleSubmitForm}
       >
         <div className="flex justify-center font-semibold text-4xl text-gray-600 ">
-          Log in
+          Sign in
         </div>
         <hr className="col-span-2 border border-gray-200 mt-4" />
         <div className="p-2 mt-4">
@@ -46,7 +46,7 @@ export default function LoginForm() {
         </div>
         <div className="flex justify-center items-center col-span-full">
           <button className="bg-blue-300 rounded-lg text-gray-600 px-20 py-2 font-semibold text-xl mt-4">
-            Log in
+            Sign in
           </button>
         </div>
       </form>
