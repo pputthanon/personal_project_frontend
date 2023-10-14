@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <Route />;
+      <Route />
       <ToastContainer position="top-center" theme="colored" />
     </>
   );

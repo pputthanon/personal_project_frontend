@@ -65,7 +65,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="flex justify-center sticky">
+    <div className="flex justify-center mt-20">
       <form
         className="bg-white grid grid-cols-2 gap-x-3 gap-y-4 border border-gray-200 rounded-2xl w-1/2 shadow p-10"
         onSubmit={handleSubmitForm}
@@ -129,7 +129,7 @@ export default function RegisterForm() {
           )}
         </div>
         <div className="flex justify-center items-center col-span-full">
-          <button className="bg-green-400 rounded-lg text-gray-600 px-20 py-2 font-semibold text-xl mt-4">
+          <button className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-gray-600 px-20 py-2 font-semibold text-xl mt-4 text-gray-800">
             Sign up
           </button>
         </div>

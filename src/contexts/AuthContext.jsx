@@ -17,7 +17,6 @@ export default function AuthContextProvider({ children }) {
       axios
         .get("/auth/me")
         .then((res) => {
-          // console.log(res.data);
           setAuthUser(res.data.user);
         })
         .finally(() => {
@@ -37,7 +36,6 @@ export default function AuthContextProvider({ children }) {
 
   const login = async (credential) => {
     const res = await axios.post("/auth/login", credential);
-    console.log(res);
     addAccessToken(res.data.accessToken);
     setAuthUser(res.data.user);
   };
