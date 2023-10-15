@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
+import { useRef } from "react";
 
 export default function EditAccountPage() {
   const { authUser } = useAuth();
+
   return (
     <div className="flex justify-center mt-10 text-font">
       <form className="bg-white w-[900px] p-4 border rounded-xl text-font">
@@ -57,11 +59,9 @@ export default function EditAccountPage() {
           </div>
         </div>
         <div className="flex justify-center items-center col-span-full gap-6">
-          <Link to="/account/overview">
-            <button className="bg-gray-200 rounded-lg px-8 py-1 font-semibold text-xl mt-4 text-gray-800">
-              Cancel
-            </button>
-          </Link>
+          <button className="bg-gray-200 rounded-lg px-8 py-1 font-semibold text-xl mt-4 text-gray-800">
+            Cancel
+          </button>
 
           <button className="bg-gradient-to-r from-[#AEB1CD] to-[#DEC5D5] rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800">
             Save
