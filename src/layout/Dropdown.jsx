@@ -37,7 +37,10 @@ export default function Dropdown() {
       {isOpen && (
         <div className="w-36 absolute bg-white right-0 translate-y-1 border rounded-xl shadow-xl p-3">
           <Link to={`/account/overview`}>
-            <div className="text-sm rounded-sm hover:bg-[#f8e4e4ce] mb-2">
+            <div
+              className="text-sm rounded-sm hover:bg-[#f8e4e4ce] mb-2"
+              onClick={() => setIsOpen(!isOpen)}
+            >
               My Account
             </div>
           </Link>
@@ -47,12 +50,18 @@ export default function Dropdown() {
             </div>
           </Link> */}
           <Link to={`/order-history`}>
-            <div className="text-sm  rounded-sm hover:bg-[#f8e4e4ce] mb-2">
+            <div
+              className="text-sm  rounded-sm hover:bg-[#f8e4e4ce] mb-2"
+              onClick={() => setIsOpen(!isOpen)}
+            >
               Orders
             </div>
           </Link>
           <Link to={`/payment-inform`}>
-            <div className="text-sm  rounded-sm hover:bg-[#f8e4e4ce] mb-2">
+            <div
+              className="text-sm  rounded-sm hover:bg-[#f8e4e4ce] mb-2"
+              onClick={() => setIsOpen(!isOpen)}
+            >
               Payment Inform
             </div>
           </Link>

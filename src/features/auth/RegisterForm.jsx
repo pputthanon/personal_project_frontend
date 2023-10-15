@@ -129,7 +129,7 @@ export default function RegisterForm() {
           )}
         </div>
         <div className="flex justify-center items-center col-span-full">
-          <button className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-gray-600 px-20 py-2 font-semibold text-xl mt-4 text-gray-800">
+          <button className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg px-20 py-2 font-semibold text-xl mt-4 text-gray-800">
             Sign up
           </button>
         </div>
