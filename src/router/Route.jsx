@@ -10,7 +10,7 @@ import AccountPage from "../pages/AccountPage";
 import AddressPage from "../pages/AddressPage";
 import OrdersPage from "../pages/OrdersPage";
 import PaymentPage from "../pages/PaymentPage";
-import EditAccount from "../pages/EditAccount";
+import EditAccountPage from "../pages/EditAccountPage";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       { path: "homepage", element: <HomePage /> },
       { path: "cart", element: <CartPage /> },
       { path: "account/overview", element: <AccountPage /> },
-      { path: "account/edit", element: <EditAccount /> },
+      { path: "account/edit", element: <EditAccountPage /> },
 
       { path: "account/address", element: <AddressPage /> },
       { path: "order-history", element: <OrdersPage /> },

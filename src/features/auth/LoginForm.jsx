@@ -44,7 +44,7 @@ export default function LoginForm() {
           />
         </div>
         <div className="flex justify-center items-center col-span-full">
-          <button className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg px-20 py-2 font-semibold text-xl mt-4 text-gray-800">
+          <button className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg px-16 py-2 font-semibold text-xl mt-4 text-gray-800">
             Sign in
           </button>
         </div>

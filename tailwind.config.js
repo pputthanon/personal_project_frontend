@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         header: "#8F73AB",
-        font: "#32323F",
+        font: "#555555",
       },
     },
   },
