@@ -7,7 +7,6 @@ import CartPage from "../pages/CartPage";
 import Authenticated from "../features/auth/Authenticated";
 import RedirectIfAuthenticate from "../features/auth/RedirectIfAuthenticate";
 import AccountPage from "../pages/AccountPage";
-import AddressPage from "../pages/AddressPage";
 import OrdersPage from "../pages/OrdersPage";
 import PaymentPage from "../pages/PaymentPage";
 import EditAccountPage from "../pages/EditAccountPage";
@@ -41,12 +40,10 @@ const router = createBrowserRouter([
     children: [
       { path: "homepage", element: <HomePage /> },
       { path: "cart", element: <CartPage /> },
-      { path: "account/overview", element: <AccountPage /> },
+      { path: "account", element: <AccountPage /> },
       { path: "account/edit", element: <EditAccountPage /> },
-
-      { path: "account/address", element: <AddressPage /> },
-      { path: "order-history", element: <OrdersPage /> },
-      { path: "payment-inform", element: <PaymentPage /> },
+      { path: "account/order-history", element: <OrdersPage /> },
+      { path: "account/payment-inform", element: <PaymentPage /> },
     ],
   },
 ]);

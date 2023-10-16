@@ -8,8 +8,5 @@ export default function RedirectIfAuthenticate({ children }) {
     return <Navigate to="/homepage" />;
   }
 
-  // if (!authUser) {
-  //   return <Navigate to="/login" />;
-  // }
   return children;
 }

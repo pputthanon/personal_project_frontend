@@ -36,7 +36,7 @@ export default function Dropdown() {
 
       {isOpen && (
         <div className="w-36 absolute bg-white right-0 translate-y-1 border rounded-xl shadow-xl p-3">
-          <Link to={`/account/overview`}>
+          <Link to={`/account`}>
             <div
               className="text-sm rounded-sm hover:bg-[#f8e4e4ce] mb-2"
               onClick={() => setIsOpen(!isOpen)}
@@ -49,7 +49,7 @@ export default function Dropdown() {
               Address
             </div>
           </Link> */}
-          <Link to={`/order-history`}>
+          <Link to={`/account/order-history`}>
             <div
               className="text-sm  rounded-sm hover:bg-[#f8e4e4ce] mb-2"
               onClick={() => setIsOpen(!isOpen)}
@@ -57,7 +57,7 @@ export default function Dropdown() {
               Orders
             </div>
           </Link>
-          <Link to={`/payment-inform`}>
+          <Link to={`/account/payment-inform`}>
             <div
               className="text-sm  rounded-sm hover:bg-[#f8e4e4ce] mb-2"
               onClick={() => setIsOpen(!isOpen)}
