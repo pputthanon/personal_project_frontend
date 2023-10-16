@@ -6,7 +6,7 @@ export default function AccountPage() {
   const { authUser } = useAuth();
   return (
     <div className="flex justify-center mt-10">
-      <div className="bg-white w-2/3 p-4 border rounded-xl text-font">
+      <div className="bg-white w-2/3 p-4 border rounded-xl text-font ">
         <div className="grid grid-cols-2 mb-2">
           <div className="flex justify-start items-center font-semibold text-xl">
             My Account
@@ -21,7 +21,7 @@ export default function AccountPage() {
           </div>
         </div>
         <hr className="border" />
-        <div className="grid grid-cols-2 mt-2">
+        <div className="grid grid-cols-2 mt-2 ml-6">
           <div>
             <div className="mb-1">First Name</div>
             <div className="mb-1">Last Name</div>

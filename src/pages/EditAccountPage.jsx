@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../hooks/use-auth";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import InputErrorMessage from "../features/auth/InputErrorMessage";
 
 const updateSchema = Joi.object({
@@ -132,16 +133,17 @@ export default function EditAccountPage() {
           </div>
         </div>
         <div className="flex justify-center items-center col-span-full gap-6">
-          <button className="bg-gray-200 rounded-lg px-8 py-1 font-semibold text-xl mt-4 text-gray-800">
-            Cancel
-          </button>
-          {/* {input && ( */}
-          <>
+          <Link to="/account">
+            <button className="bg-gray-200 rounded-lg px-8 py-1 font-semibold text-xl mt-4 text-gray-800">
+              Cancel
+            </button>
+          </Link>
+
+          {input && (
             <button className="bg-gradient-to-r from-[#AEB1CD] to-[#DEC5D5] rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800">
               Save
             </button>
-          </>
-          {/* )} */}
+          )}
         </div>
       </form>
     </div>
