@@ -67,13 +67,11 @@ export default function PaymentPage() {
         <div className="flex justify-center items-center col-span-full gap-6">
           {/* <Link to="/homepage"> */}
 
-          <button
-            className="bg-gray-200 rounded-lg px-8 py-1 font-semibold text-xl mt-4 text-gray-800"
-            onClick={() => {
+          <button className="bg-gray-200 rounded-lg px-8 py-1 font-semibold text-xl mt-4 text-gray-800">
+            {/* onClick={() => {
               input.current.value = "";
               setFile(null);
-            }}
-          >
+            }} */}
             Cancel
           </button>
           {/* </Link> */}
