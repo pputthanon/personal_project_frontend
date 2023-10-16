@@ -33,13 +33,9 @@ export default function AccountPage() {
           <div className="">
             <div className="mb-1">{authUser.firstName}</div>
             <div className="mb-1">{authUser.lastName}</div>
-            <div className="mb-1">
-              {authUser.email || (authUser.email = "-")}
-            </div>
-            <div className="mb-1">
-              {authUser.mobile || (authUser.mobile = "-")}
-            </div>
-            <div className="mb-1">{(authUser.address = "-")}</div>
+            <div className="mb-1">{authUser.email}</div>
+            <div className="mb-1">{authUser.mobile || "-"} </div>
+            <div className="mb-1">{authUser.address || "-"} </div>
           </div>
         </div>
       </div>

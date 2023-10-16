@@ -40,6 +40,10 @@ export default function AuthContextProvider({ children }) {
     setAuthUser(res.data.user);
   };
 
+  const update = async (updateInputObj) => {
+    const res = await axios.patch("/account/edit", updateInputObj);
+  };
+
   const logout = () => {
     removeAccessToken();
     setAuthUser(null);
@@ -47,7 +51,7 @@ export default function AuthContextProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ register, login, logout, loading, authUser }}
+      value={{ register, login, logout, update, loading, authUser }}
     >
       {children}
     </AuthContext.Provider>
