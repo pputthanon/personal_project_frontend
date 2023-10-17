@@ -5,6 +5,7 @@ import { useAuth } from "../hooks/use-auth";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import InputErrorMessage from "../features/auth/InputErrorMessage";
+import InputForm from "../components/InputForm";
 
 const updateSchema = Joi.object({
   firstName: Joi.string().trim(),
@@ -26,15 +27,9 @@ const validateUpdate = (input) => {
 };
 
 export default function EditAccountPage() {
-  const [input, setInput] = useState({
-    // firstName: "",
-    // lastName: "",
-    // mobile: "",
-    // address: "",
-  });
-
   const [error, setError] = useState({});
   const { authUser, update } = useAuth();
+  const [input, setInput] = useState(authUser);
   const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
@@ -43,9 +38,10 @@ export default function EditAccountPage() {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    const validationError = validateUpdate(input);
-    if (validationError) {
-      return setError(validationError);
+    const { value, error } = validateUpdate(input);
+    // console.log(validationError);
+    if (error) {
+      return setError(error);
     }
 
     setError({});
@@ -53,7 +49,6 @@ export default function EditAccountPage() {
       console.log(err);
       toast.error(err.response?.data.message);
     });
-
     toast.success("Your account has been updated!");
     navigate("/account");
   };
@@ -75,30 +70,30 @@ export default function EditAccountPage() {
         <div className="">
           <div className="grid grid-cols-2 mt-2 items-center ">
             <div className="mb-1 ml-4">First Name</div>
-            <input
+            <InputForm
               type="text"
               className="border rounded-md pl-2 mb-1 focus:ring focus:ring-blue-200 outline-none mr-4"
               placeholder={authUser.firstName}
               value={input.firstName}
               onChange={handleChangeInput}
               name="firstName"
-              hasError={error.firstName}
             />
             {error.firstName && <InputErrorMessage message={error.firstName} />}
           </div>
           <div className="grid grid-cols-2 mt-2 items-center">
             <div className="mb-1 ml-4">Last Name</div>
-            <input
+            <InputForm
               type="text"
               className="border rounded-md pl-2 mb-1 focus:ring focus:ring-blue-200 outline-none mr-4"
               placeholder={authUser.lastName}
               value={input.lastName}
               onChange={handleChangeInput}
               name="lastName"
-              hasError={error.lastName}
             />
+
             {error.lastName && <InputErrorMessage message={error.lastName} />}
           </div>
+
           <div className="grid grid-cols-2 mt-2 items-center">
             <div className="mb-1 ml-4">Email</div>
             <div className="border rounded-md pl-2 mb-1 h-7 mr-4 bg-gray-200 text-font">
@@ -107,28 +102,29 @@ export default function EditAccountPage() {
           </div>
           <div className="grid grid-cols-2 mt-2 items-center">
             <div className="mb-1 ml-4">Phone Number</div>
-            <input
+            <InputForm
               type="text"
               className="border rounded-md pl-2 mb-1 focus:ring focus:ring-blue-200 outline-none mr-4"
-              placeholder={authUser.mobile || "-"}
-              value={input.mobile}
+              placeholder={authUser.mobile ?? "-"}
+              value={input.mobile ?? "-"}
               onChange={handleChangeInput}
               name="mobile"
-              hasError={error.mobile}
             />
+
             {error.mobile && <InputErrorMessage message={error.mobile} />}
           </div>
+
           <div className="grid grid-cols-2 mt-2 items-center">
             <div className="mb-1 ml-4">Address</div>
-            <input
+            <InputForm
               type="text"
               className="border rounded-md pl-2 mb-1 focus:ring focus:ring-blue-200 outline-none mr-4"
-              placeholder={authUser.address || "-"}
-              value={input.address}
+              placeholder={authUser.address ?? "-"}
+              value={input.address ?? "-"}
               onChange={handleChangeInput}
               name="address"
-              hasError={error.address}
             />
+
             {error.address && <InputErrorMessage message={error.address} />}
           </div>
         </div>
