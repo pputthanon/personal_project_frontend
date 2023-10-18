@@ -1,9 +1,22 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
 import { PenIcon } from "../icons";
+import { useEffect, useState } from "react";
+import axios from "../config/axios";
 
 export default function AccountPage() {
   const { authUser } = useAuth();
+  // const [page, setPage] = useState([]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/account/edit")
+  //     .then((res) => setPage(res.data.updateprofile))
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
   return (
     <div className="flex justify-center mt-10">
       <div className="bg-white w-2/3 p-4 border rounded-xl text-font ">

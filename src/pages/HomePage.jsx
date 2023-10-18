@@ -20,7 +20,7 @@ export default function HomePage() {
   // fetch => get Data
   // set data => Array Book
   // pass props => Array Book
-  console.log(allBook);
+  // console.log(allBook);
   return (
     <div className="h-screen flex justify-center">
       <div className="">
