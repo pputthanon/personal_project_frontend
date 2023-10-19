@@ -3,16 +3,16 @@ import axios from "../../config/axios";
 import { MinusIcon, PlusIcon } from "../../icons";
 
 export default function CartQuantity({ bookObj }) {
-  const addBookCart = (id) => {
+  const addBookCart = async (id) => {
     console.log(id);
     setAmount((amount) => amount + 1);
-    axios.patch(`/cart/add/${id}`);
+    await axios.patch(`/cart/add/${id}`);
   };
 
-  const removeBookCart = (id) => {
+  const removeBookCart = async (id) => {
     console.log(id);
     setAmount((amount) => amount - 1);
-    axios.patch(`/cart/remove/${id}`);
+    await axios.patch(`/cart/remove/${id}`);
   };
 
   const [amount, setAmount] = useState(bookObj.amount);
