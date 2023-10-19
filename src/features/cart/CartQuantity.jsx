@@ -1,15 +1,31 @@
+import { useState } from "react";
+import axios from "../../config/axios";
 import { MinusIcon, PlusIcon } from "../../icons";
 
 export default function CartQuantity({ bookObj }) {
+  const addBookCart = (id) => {
+    console.log(id);
+    setAmount((amount) => amount + 1);
+    axios.patch(`/cart/add/${id}`);
+  };
+
+  const removeBookCart = (id) => {
+    console.log(id);
+    setAmount((amount) => amount - 1);
+    axios.patch(`/cart/remove/${id}`);
+  };
+
+  const [amount, setAmount] = useState(bookObj.amount);
+
   return (
     <div className="flex justify-center items-center gap-6">
-      <div>
+      <button onClick={() => removeBookCart(bookObj.id)}>
         <MinusIcon />
-      </div>
-      <div className="text-2xl">{bookObj.amount}</div>
-      <div className="">
+      </button>
+      <div className="text-2xl">{amount}</div>
+      <button className="" onClick={() => addBookCart(bookObj.id)}>
         <PlusIcon />
-      </div>
+      </button>
     </div>
   );
 }
