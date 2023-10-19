@@ -1,9 +1,10 @@
 export default function CartContent({ bookObj }) {
   return (
-    <div>
-      <div className="font-semibold text-[12px]">{bookObj.products.name}</div>
-      <div className="text-[12px] mt-1 mb-1">{bookObj.products.author}</div>
+    <div className="flex items-center justify-center gap-4">
       <div>{bookObj.products.price} Baht</div>
+      <div>
+        <button className="text-xs text-red-600">delete</button>
+      </div>
     </div>
   );
 }

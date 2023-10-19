@@ -19,7 +19,7 @@ export default function CartPage() {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <CartList allBook={allBook} />
     </div>
   );
