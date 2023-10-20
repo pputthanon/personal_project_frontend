@@ -1,4 +1,3 @@
-import { useState } from "react";
 import axios from "../../config/axios";
 
 export default function CartContent({ bookObj, setAllBook }) {

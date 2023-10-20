@@ -6,16 +6,6 @@ import axios from "../config/axios";
 
 export default function AccountPage() {
   const { authUser } = useAuth();
-  // const [page, setPage] = useState([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("/account/edit")
-  //     .then((res) => setPage(res.data.updateprofile))
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
 
   return (
     <div className="flex justify-center mt-10">

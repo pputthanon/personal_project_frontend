@@ -6,6 +6,7 @@ import CartHeader from "../features/cart/CartHeader";
 
 export default function CartPage() {
   const [allBook, setAllBook] = useState([]);
+
   const { authUser } = useAuth();
   // console.log(authUser);
   console.log(allBook);
@@ -16,6 +17,15 @@ export default function CartPage() {
       .get(`/cart/${authUser.id}`)
       .then((res) => {
         setAllBook(res.data.getBook);
+        const total = res.data.getBook.reduce((acc, item) => {
+          let subtotal = {};
+          subtotal["productsId"] = item.productsId;
+          subtotal["sum"] = item.amount * item.products.price;
+          console.log(subtotal);
+          console.log(acc);
+          return [...acc, subtotal];
+        }, []);
+        // console.log(total);
       })
       .catch((err) => console.log(err));
   }, []);
