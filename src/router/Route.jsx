@@ -10,6 +10,7 @@ import AccountPage from "../pages/AccountPage";
 import OrdersPage from "../pages/OrdersPage";
 import PaymentPage from "../pages/PaymentPage";
 import EditAccountPage from "../pages/EditAccountPage";
+import CheckoutPage from "../pages/CheckoutPage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
       { path: "account/edit", element: <EditAccountPage /> },
       { path: "account/order-history", element: <OrdersPage /> },
       { path: "account/payment-inform", element: <PaymentPage /> },
+      { path: "checkout", element: <CheckoutPage /> },
     ],
   },
 ]);
