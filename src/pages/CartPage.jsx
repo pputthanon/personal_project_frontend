@@ -4,32 +4,36 @@ import axios from "../config/axios";
 import { useAuth } from "../hooks/use-auth";
 import CartHeader from "../features/cart/CartHeader";
 import { Link } from "react-router-dom";
+import { useCart } from "../hooks/use-cart";
 
 export default function CartPage() {
   const [allBook, setAllBook] = useState([]);
 
   const { authUser } = useAuth();
+  const { checkUpdateCart, setCheckUpdateCart } = useCart();
   // console.log(authUser);
   console.log(allBook);
 
   useEffect(() => {
-    // console.log("run this");
     axios
       .get(`/cart/${authUser.id}`)
       .then((res) => {
         setAllBook(res.data.getBook);
-        // const total = res.data.getBook.reduce((acc, item) => {
-        //   let subtotal = {};
-        //   subtotal["productsId"] = item.productsId;
-        //   subtotal["sum"] = item.amount * item.products.price;
-        //   console.log(subtotal);
-        //   console.log(acc);
-        //   return [...acc, subtotal];
-        // }, []);
-        // console.log(total);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    if (checkUpdateCart) {
+      axios
+        .get(`/cart/${authUser.id}`)
+        .then((res) => {
+          setAllBook(res.data.getBook);
+        })
+        .catch((err) => console.log(err));
+      setCheckUpdateCart(false);
+    }
+  }, [checkUpdateCart]);
 
   return (
     <div className="">

@@ -1,21 +1,25 @@
 import { useState } from "react";
 import axios from "../../config/axios";
 import { MinusIcon, PlusIcon } from "../../icons";
+import { useCart } from "../../hooks/use-cart";
 
 export default function CartQuantity({ bookObj }) {
   const addBookCart = async (id) => {
     console.log(id);
     setAmount((amount) => amount + 1);
     await axios.patch(`/cart/add/${id}`);
+    setCheckUpdateCart(true);
   };
 
   const removeBookCart = async (id) => {
     console.log(id);
     setAmount((amount) => amount - 1);
     await axios.patch(`/cart/remove/${id}`);
+    setCheckUpdateCart(true);
   };
 
   const [amount, setAmount] = useState(bookObj.amount);
+  const { setCheckUpdateCart } = useCart();
 
   return (
     <div className="flex justify-center items-center gap-6">
