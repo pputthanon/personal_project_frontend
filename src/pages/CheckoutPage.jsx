@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/use-auth";
 import axios from "../config/axios";
-import { useCart } from "../hooks/use-cart";
 
 export default function CheckoutPage() {
   const [allBook, setAllBook] = useState([]);
 
   const { authUser } = useAuth();
-  const { checkUpdateCart, setCheckUpdateCart } = useCart();
+
   // console.log(authUser);
   console.log(allBook);
 
@@ -27,20 +26,27 @@ export default function CheckoutPage() {
 
   return (
     <div>
-      <div className="flex justify-center">
-        <div className="w-2/3 ">
+      <div className="flex justify-center text-font">
+        <div className="w-2/5 ">
           <div className="bg-white flex justify-center text-2xl mt-10 border rounded-t-xl py-2">
-            Check out
+            Order Summary
           </div>
-          <div className="bg-blue-400 border rounded-b-xl">
-            <div>
-              <div>Total Price: {totalPrice}</div>
+
+          <div className="py-2 flex justify-between bg-white">
+            <div className="ml-10">Subtotal Price {totalPrice}</div>
+            <div className="mr-10"> {totalPrice}</div>
+          </div>
+
+          <div className="bg-blue-200 border rounded-b-xl ">
+            <div className="py-2 flex justify-between font-semibold">
+              <div className="ml-10 ">Total Price {totalPrice}</div>
+              <div className="mr-10">{totalPrice}</div>
             </div>
           </div>
         </div>
       </div>
       <div className="flex justify-center mt-10">
-        <div className="w-2/3 flex justify-end ">
+        <div className="w-2/5 flex justify-end ">
           <button className="border p-2 bg-purple-300 rounded-xl">
             Confirm Order
           </button>
