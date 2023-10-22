@@ -8,7 +8,7 @@ export default function CheckoutPage() {
   const { authUser } = useAuth();
 
   // console.log(authUser);
-  console.log(allBook);
+  // console.log(allBook);
 
   useEffect(() => {
     axios
@@ -23,6 +23,14 @@ export default function CheckoutPage() {
     const sum = item.amount * item.products.price;
     return acc + sum;
   }, 0);
+  const sendDataToBackend = async () => {
+    const totalPrice = allBook.reduce((acc, item) => {
+      const sum = item.amount * item.products.price;
+      return acc + sum;
+    }, 0);
+    await axios.post("/order", { total: totalPrice });
+    // console.log(total);
+  };
 
   return (
     <div>
@@ -47,7 +55,10 @@ export default function CheckoutPage() {
       </div>
       <div className="flex justify-center mt-10">
         <div className="w-2/5 flex justify-end ">
-          <button className="border p-2 bg-purple-300 rounded-xl">
+          <button
+            className="border p-2 bg-purple-300 rounded-xl"
+            onClick={sendDataToBackend}
+          >
             Confirm Order
           </button>
         </div>
