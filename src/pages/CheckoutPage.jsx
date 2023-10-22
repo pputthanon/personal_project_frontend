@@ -29,7 +29,6 @@ export default function CheckoutPage() {
       return acc + sum;
     }, 0);
     await axios.post("/order", { total: totalPrice });
-    // console.log(total);
   };
 
   return (
