@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/use-auth";
+import { Link } from "react-router-dom";
 import axios from "../config/axios";
 
 export default function CheckoutPage() {
@@ -55,12 +56,14 @@ export default function CheckoutPage() {
       </div>
       <div className="flex justify-center mt-10">
         <div className="w-2/5 flex justify-end ">
-          <button
-            className="border p-2 bg-purple-300 rounded-xl"
-            onClick={sendDataToBackend}
-          >
-            Confirm Order
-          </button>
+          <Link to="/account/payment-inform">
+            <button
+              className="border p-2 bg-purple-300 rounded-xl"
+              onClick={sendDataToBackend}
+            >
+              Confirm Order
+            </button>
+          </Link>
         </div>
       </div>
     </div>
