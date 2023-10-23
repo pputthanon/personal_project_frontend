@@ -39,13 +39,13 @@ export default function PaymentPage() {
           </div>
         </div>
 
-        <div className="ml-6 mt-4">
+        {/* <div className="ml-6 mt-4">
           <div className="font-semibold ">Purchase order number</div>
           <input
             type="text"
             className="border  rounded-lg mt-1 pl-2 focus:ring focus:ring-blue-200 outline-none w-1/2"
           />
-        </div>
+        </div> */}
 
         <div className="ml-6 mt-4">
           <div className="font-semibold mb-1">Attach File</div>
@@ -59,8 +59,8 @@ export default function PaymentPage() {
             }}
           />
           <div className="text-xs text-red-700 mt-1">
-            *No file chosen Upload *File size does not exceed 2MB and supports
-            only jpg / png / pdf file extensions.
+            *File size does not exceed 2MB and supports only jpg / png / pdf
+            file extensions.
           </div>
         </div>
 
