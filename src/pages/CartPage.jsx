@@ -14,6 +14,7 @@ export default function CartPage() {
   // console.log(authUser);
   console.log(allBook);
 
+  // for fetch book
   useEffect(() => {
     axios
       .get(`/cart/${authUser.id}`)
@@ -23,7 +24,9 @@ export default function CartPage() {
       .catch((err) => console.log(err));
   }, []);
 
+  // for checkUpdateCart
   useEffect(() => {
+    // fetch updated data
     if (checkUpdateCart) {
       axios
         .get(`/cart/${authUser.id}`)
@@ -31,16 +34,18 @@ export default function CartPage() {
           setAllBook(res.data.getBook);
         })
         .catch((err) => console.log(err));
-      setCheckUpdateCart(false);
+      setCheckUpdateCart(false); // set state to false
     }
-  }, [checkUpdateCart]);
+  }, [checkUpdateCart]); // when state changed trigger useEffect
 
   return (
     <div className="">
       <CartHeader />
+
       <div>
         <CartList allBook={allBook} setAllBook={setAllBook} />
       </div>
+
       <div className="flex justify-center mt-10">
         <div className="w-2/3 flex justify-end">
           <Link to="/checkout">

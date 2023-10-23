@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import axios from "../config/axios";
 
+// for store state and provide to other FUNCTION COMPONENT
 export const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {

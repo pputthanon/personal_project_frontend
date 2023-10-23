@@ -23,6 +23,7 @@ export default function CheckoutPage() {
     const sum = item.amount * item.products.price;
     return acc + sum;
   }, 0);
+
   const sendDataToBackend = async () => {
     const totalPrice = allBook.reduce((acc, item) => {
       const sum = item.amount * item.products.price;

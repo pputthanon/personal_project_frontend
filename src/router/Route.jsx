@@ -14,7 +14,7 @@ import CheckoutPage from "../pages/CheckoutPage";
 
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "/",
     element: (
       <RedirectIfAuthenticate>
         <Layout />
