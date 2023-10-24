@@ -2,12 +2,12 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../config/axios";
 
-export default function PaymentPage() {
+export default function PaymentPage({ setFile }) {
   const input = useRef(null);
-  const [file, setFile] = useState(null);
+
   return (
     <div className="flex justify-center mt-10 text-font">
-      <form className="bg-white w-[800px] p-4 border rounded-xl ">
+      <form className="bg-white w-2/3 p-4 border rounded-xl ">
         <div className=" font-semibold text-xl spacing mb-2 ">
           Payment Inform
         </div>
@@ -39,14 +39,14 @@ export default function PaymentPage() {
             <div className="ml-6">Account Number: 047-1-05221-3</div>
           </div>
         </div>
-
+        {/* 
         <div className="ml-6 mt-4">
           <div className="font-semibold ">Purchase order number</div>
           <input
             type="text"
             className="border  rounded-lg mt-1 pl-2 focus:ring focus:ring-blue-200 outline-none w-1/2"
           />
-        </div>
+        </div> */}
 
         <div className="ml-6 mt-4">
           <div className="font-semibold mb-1">Attach File</div>
@@ -68,7 +68,7 @@ export default function PaymentPage() {
         <div className="flex justify-center items-center col-span-full gap-6">
           {/* <Link to="/homepage"> */}
 
-          <button
+          {/* <button
             className="bg-gray-200 rounded-lg px-8 py-1 font-semibold text-xl mt-4 text-gray-800"
             onClick={() => {
               input.current.value = "";
@@ -77,9 +77,9 @@ export default function PaymentPage() {
           >
             Cancel
           </button>
-          {/* </Link> */}
+          </Link> */}
 
-          <button
+          {/* <button
             className="bg-gradient-to-r from-[#AEB1CD] to-[#DEC5D5] rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800"
             onClick={(event) => {
               event.preventDefault();
@@ -96,7 +96,7 @@ export default function PaymentPage() {
             }}
           >
             Save
-          </button>
+          </button> */}
         </div>
       </form>
     </div>

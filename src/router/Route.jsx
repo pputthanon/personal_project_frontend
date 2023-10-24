@@ -16,6 +16,23 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
+      <Authenticated>
+        <Layout />
+      </Authenticated>
+    ),
+    children: [
+      { path: "homepage", element: <HomePage /> },
+      { path: "cart", element: <CartPage /> },
+      { path: "account", element: <AccountPage /> },
+      { path: "account/edit", element: <EditAccountPage /> },
+      { path: "account/order-history", element: <OrdersPage /> },
+      { path: "account/payment-inform", element: <PaymentPage /> },
+      { path: "checkout", element: <CheckoutPage /> },
+    ],
+  },
+  {
+    path: "/",
+    element: (
       <RedirectIfAuthenticate>
         <Layout />
       </RedirectIfAuthenticate>
@@ -29,23 +46,6 @@ const router = createBrowserRouter([
         path: "register",
         element: <RegisterPage />,
       },
-    ],
-  },
-  {
-    path: "/",
-    element: (
-      <Authenticated>
-        <Layout />
-      </Authenticated>
-    ),
-    children: [
-      { path: "homepage", element: <HomePage /> },
-      { path: "cart", element: <CartPage /> },
-      { path: "account", element: <AccountPage /> },
-      { path: "account/edit", element: <EditAccountPage /> },
-      { path: "account/order-history", element: <OrdersPage /> },
-      { path: "account/payment-inform", element: <PaymentPage /> },
-      { path: "checkout", element: <CheckoutPage /> },
     ],
   },
 ]);

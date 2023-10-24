@@ -57,14 +57,15 @@ export default function Dropdown() {
               Orders
             </div>
           </Link>
-          <Link to={`/account/payment-inform`}>
+
+          {/* <Link to={`/account/payment-inform`}>
             <div
               className="text-sm  rounded-sm hover:bg-[#f8e4e4ce] mb-2"
               onClick={() => setIsOpen(!isOpen)}
             >
               Payment Inform
             </div>
-          </Link>
+          </Link> */}
 
           <div
             className="text-sm rounded-sm hover:bg-[#f8e4e4ce] gap-2"
