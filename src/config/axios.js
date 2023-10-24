@@ -18,6 +18,7 @@ axios.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       removeAccessToken();
+      // ต้องใช้ concept ของ JS ในการ redirect
       window.location.href = "/login";
     }
     return Promise.reject(error);
