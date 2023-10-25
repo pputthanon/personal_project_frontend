@@ -45,9 +45,9 @@ export default function CheckoutPage() {
     try {
       const formData = new FormData();
       formData.append("transferSlip", file);
-      // console.log(formData, "file");
+
       formData.append("totalPrice", totalPrice);
-      // console.log(formData, "fdata");
+
       formData.append("userId", authUser.id);
       await axios.post("/order", formData);
     } catch (err) {
@@ -81,12 +81,14 @@ export default function CheckoutPage() {
       <div className="flex justify-center mt-10">
         <div className="w-2/3 flex justify-end ">
           {/* <Link to="/account/payment-inform"> */}
-          <button
-            className="border p-2 bg-purple-300 rounded-xl"
-            onClick={sendDataToBackend}
-          >
-            Confirm Order
-          </button>
+          <Link to="/account/order-history">
+            <button
+              className="border p-2 bg-purple-300 rounded-xl"
+              onClick={sendDataToBackend}
+            >
+              Confirm Order
+            </button>
+          </Link>
           {/* </Link> */}
         </div>
       </div>

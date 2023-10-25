@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import LoginInput from "./LoginInput";
 import { useAuth } from "../../hooks/use-auth";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const [input, setInput] = useState({
@@ -10,12 +11,21 @@ export default function LoginForm() {
   });
 
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    login(input).catch((err) => {
-      toast.error(err.response?.data.message);
-    });
+    login(input)
+      .then((res) => {
+        if (res && res.isAdmin) {
+          navigate("/admin");
+          return;
+        }
+        return;
+      })
+      .catch((err) => {
+        toast.error(err.response?.data.message);
+      });
   };
 
   return (

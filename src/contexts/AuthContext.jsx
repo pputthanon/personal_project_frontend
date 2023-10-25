@@ -11,7 +11,7 @@ export const AuthContext = createContext();
 export default function AuthContextProvider({ children }) {
   const [authUser, setAuthUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [authAdmin, setAuthAdmin] = useState(false);
   useEffect(() => {
     if (getAccessToken()) {
       axios
@@ -35,6 +35,7 @@ export default function AuthContextProvider({ children }) {
     const res = await axios.post("/auth/login", credential);
     addAccessToken(res.data.accessToken);
     setAuthUser(res.data.user);
+    return res.data.user;
   };
 
   const update = async (updateInputObj) => {
@@ -48,7 +49,7 @@ export default function AuthContextProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ register, login, logout, update, loading, authUser }}
+      value={{ register, login, logout, update, loading, authUser, authAdmin }}
     >
       {children}
     </AuthContext.Provider>

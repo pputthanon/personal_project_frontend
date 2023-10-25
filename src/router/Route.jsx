@@ -11,8 +11,28 @@ import OrdersPage from "../pages/OrdersPage";
 import PaymentPage from "../pages/PaymentPage";
 import EditAccountPage from "../pages/EditAccountPage";
 import CheckoutPage from "../pages/CheckoutPage";
+import AdminPage from "../pages/admin-pages/AdminPage";
+
+import AdminAuthenticated from "../features/auth/AdminAuthenticated";
+import AdminLayout from "../layout/AdminLayout";
+import OrderListPage from "../pages/admin-pages/OrderListPage";
+import { useAuth } from "../hooks/use-auth";
+import { useMemo } from "react";
 
 const router = createBrowserRouter([
+  {
+    path: "/admin",
+    element: (
+      <AdminAuthenticated>
+        <AdminLayout />
+      </AdminAuthenticated>
+    ),
+
+    children: [
+      { element: <AdminPage />, path: "" },
+      // { path: "/orders", element: <OrderListPage /> },
+    ],
+  },
   {
     path: "/",
     element: (
@@ -28,6 +48,18 @@ const router = createBrowserRouter([
       { path: "account/order-history", element: <OrdersPage /> },
       { path: "account/payment-inform", element: <PaymentPage /> },
       { path: "checkout", element: <CheckoutPage /> },
+      // {
+      //   path: "/admin",
+      //   element: (
+      //     <AdminAuthenticated>
+      //       <AdminLayout />
+      //     </AdminAuthenticated>
+      //   ),
+      //   children: [
+      //     { element: <AdminPage />, index: true },
+      //     // { path: "/orders", element: <OrderListPage /> },
+      //   ],
+      // },
     ],
   },
   {
