@@ -7,3 +7,5 @@ export const addAccessToken = (token) =>
 export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN);
 
 export const removeAccessToken = () => localStorage.removeItem(ACCESS_TOKEN);
+
+export const addPath = (path) => localStorage.setItem(PATHNAME, path);

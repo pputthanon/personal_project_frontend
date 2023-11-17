@@ -18,6 +18,7 @@ import AdminLayout from "../layout/AdminLayout";
 import OrderListPage from "../pages/admin-pages/OrderListPage";
 import { useAuth } from "../hooks/use-auth";
 import { useMemo } from "react";
+import OrderItemPage from "../pages/OrderItemPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
       { path: "account/order-history", element: <OrdersPage /> },
       { path: "account/payment-inform", element: <PaymentPage /> },
       { path: "checkout", element: <CheckoutPage /> },
+      { path: "order/orderItems/:orderId", element: <OrderItemPage /> },
       // {
       //   path: "/admin",
       //   element: (

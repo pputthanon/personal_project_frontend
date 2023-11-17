@@ -22,7 +22,7 @@ export default function HomePage() {
   // pass props => Array Book
   // console.log(allBook);
   return (
-    <div className="h-screen flex justify-center">
+    <div className="h-full flex justify-center ">
       <div className="">
         <Hero />
         <BookList allBook={allBook} />

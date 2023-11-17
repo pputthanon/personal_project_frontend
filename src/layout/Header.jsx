@@ -1,3 +1,4 @@
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
 import Dropdown from "./Dropdown";
@@ -10,11 +11,13 @@ export default function Header() {
       <div className="flex justify-normal items-center ml-4">
         <Link to="/homepage">Onmyway</Link>
       </div>
-      <div className="flex justify-end gap-4 items-center mr-4">
+      <div className="flex justify-end gap-5 items-center mr-4">
         {authUser ? (
           <>
             <Link to="/cart">
-              <span>Cart</span>
+              <div className="text-[1.5rem]">
+                <FaShoppingCart />
+              </div>
             </Link>
             <Dropdown />
           </>

@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import InputErrorMessage from "../features/auth/InputErrorMessage";
 import InputForm from "../components/InputForm";
+import { useEffect } from "react";
 
 const updateSchema = Joi.object({
   firstName: Joi.string().trim(),
@@ -28,7 +29,7 @@ const validateUpdate = (input) => {
 
 export default function EditAccountPage() {
   const [error, setError] = useState({});
-  const { authUser, update } = useAuth();
+  const { authUser, update, setAuthUser } = useAuth();
   const [input, setInput] = useState(authUser);
   const navigate = useNavigate();
 
@@ -39,17 +40,19 @@ export default function EditAccountPage() {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     const { value, error } = validateUpdate(input);
-    // console.log(validationError);
+
     if (error) {
       return setError(error);
     }
 
     setError({});
     update(input).catch((err) => {
-      console.log(err);
       toast.error(err.response?.data.message);
     });
-    toast.success("Your account has been updated!");
+    {
+      input ? toast.success("Your account has been updated!") : null;
+    }
+
     navigate("/account");
   };
 
@@ -135,11 +138,13 @@ export default function EditAccountPage() {
             </button>
           </Link>
 
-          {input && (
-            <button className="bg-gradient-to-r from-[#AEB1CD] to-[#DEC5D5] rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800">
-              Save
-            </button>
-          )}
+          <button className="bg-gradient-to-r from-[#AEB1CD] to-[#DEC5D5] rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800">
+            Save
+          </button>
+
+          {/* <button className="bg-amber-500 rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800">
+            Back to profile
+          </button> */}
         </div>
       </form>
     </div>

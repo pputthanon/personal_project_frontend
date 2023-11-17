@@ -59,7 +59,7 @@ export default function RegisterForm() {
       console.log(err);
       toast.error(err.response?.data.message);
     });
-    //ใช้use navigate navigateไปหน้าloginซึ่งก่อนจะนาวิเกตบอกยูเซ้อหน่อยว่าสมัตรสำเร็จ
+
     toast.success("Your account has been created!");
 
     navigate("/login");

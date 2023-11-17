@@ -39,14 +39,6 @@ export default function PaymentPage({ setFile }) {
             <div className="ml-6">Account Number: 047-1-05221-3</div>
           </div>
         </div>
-        {/* 
-        <div className="ml-6 mt-4">
-          <div className="font-semibold ">Purchase order number</div>
-          <input
-            type="text"
-            className="border  rounded-lg mt-1 pl-2 focus:ring focus:ring-blue-200 outline-none w-1/2"
-          />
-        </div> */}
 
         <div className="ml-6 mt-4">
           <div className="font-semibold mb-1">Attach File</div>
@@ -59,44 +51,6 @@ export default function PaymentPage({ setFile }) {
               }
             }}
           />
-          <div className="text-xs text-red-700 mt-1">
-            *File size does not exceed 2MB and supports only jpg / png / pdf
-            file extensions.
-          </div>
-        </div>
-
-        <div className="flex justify-center items-center col-span-full gap-6">
-          {/* <Link to="/homepage"> */}
-
-          {/* <button
-            className="bg-gray-200 rounded-lg px-8 py-1 font-semibold text-xl mt-4 text-gray-800"
-            onClick={() => {
-              input.current.value = "";
-              setFile(null);
-            }}
-          >
-            Cancel
-          </button>
-          </Link> */}
-
-          {/* <button
-            className="bg-gradient-to-r from-[#AEB1CD] to-[#DEC5D5] rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800"
-            onClick={(event) => {
-              event.preventDefault();
-              const data = new FormData();
-              data.append("transferSlip", file);
-              axios
-                .patch("/user/payment-inform", data)
-                .then((res) => {
-                  console.log(res.data);
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-            }}
-          >
-            Save
-          </button> */}
         </div>
       </form>
     </div>

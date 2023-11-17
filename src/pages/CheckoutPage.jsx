@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/use-auth";
 import { Link } from "react-router-dom";
 import axios from "../config/axios";
-import CartList from "../features/cart/CartList";
 import OrderSumList from "../features/order/OrderSumList";
 import PaymentPage from "./PaymentPage";
 
@@ -10,14 +9,6 @@ export default function CheckoutPage() {
   const [allBook, setAllBook] = useState([]);
   const { authUser } = useAuth();
   const [file, setFile] = useState(null);
-  // const [input, setInput] = useState({
-  //   transferSlip: "",
-  //   userId: authUser.id,
-  //   totalPrice: "",
-  // });
-
-  // console.log(authUser);
-  // console.log(allBook);
 
   useEffect(() => {
     axios
@@ -28,20 +19,12 @@ export default function CheckoutPage() {
       .catch((err) => console.log(err));
   }, []);
 
-  // console.log(allBook);
-
   const totalPrice = allBook.reduce((acc, item) => {
     const sum = item.amount * item.products.price;
     return acc + sum;
   }, 0);
-  console.log(file, "setfile");
-  const sendDataToBackend = async () => {
-    // const totalPrice = allBook.reduce((acc, item) => {
-    //   const sum = item.amount * item.products.price;
-    //   return acc + sum;
-    // }, 0);
 
-    // const data = new FormData();
+  const sendDataToBackend = async () => {
     try {
       const formData = new FormData();
       formData.append("transferSlip", file);
@@ -59,13 +42,11 @@ export default function CheckoutPage() {
     <div>
       <div className="flex justify-center text-font">
         <div className="w-2/3 ">
-          <div className="bg-white flex justify-center text-2xl mt-10 border rounded-t-xl py-2">
+          <div className="bg-white flex justify-center text-2xl mt-10 border rounded-t-xl py-2 font-bold">
             Order Summary
           </div>
-          {/* <div className="py-2 flex justify-between bg-white"> */}
-          {/* <CartList allBook={allBook} setAllBook={setAllBook} /> */}
+
           <OrderSumList allBook={allBook} setAllBook={setAllBook} />
-          {/* </div> */}
 
           <div className="bg-blue-200 border rounded-b-xl ">
             <div className="py-2 flex justify-between font-semibold">
@@ -80,16 +61,14 @@ export default function CheckoutPage() {
 
       <div className="flex justify-center mt-10">
         <div className="w-2/3 flex justify-end ">
-          {/* <Link to="/account/payment-inform"> */}
           <Link to="/account/order-history">
             <button
-              className="border p-2 bg-purple-300 rounded-xl"
+              className="border p-2 bg-purple-300 rounded-xl font-semibold"
               onClick={sendDataToBackend}
             >
               Confirm Order
             </button>
           </Link>
-          {/* </Link> */}
         </div>
       </div>
     </div>
