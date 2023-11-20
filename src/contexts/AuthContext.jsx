@@ -14,14 +14,7 @@ export default function AuthContextProvider({ children }) {
 
   useEffect(() => {
     if (getAccessToken()) {
-      axios
-        .get("/auth/me")
-        .then((res) => {
-          setAuthUser(res.data.user);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      getUser();
     } else {
       setLoading(false);
     }
@@ -46,7 +39,16 @@ export default function AuthContextProvider({ children }) {
     removeAccessToken();
     setAuthUser(null);
   };
-
+  const getUser = async () => {
+    try {
+      const res = await axios.get("/auth/me");
+      setAuthUser(res.data.user);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <AuthContext.Provider
       value={{
@@ -57,6 +59,7 @@ export default function AuthContextProvider({ children }) {
         loading,
         authUser,
         setAuthUser,
+        getUser,
       }}
     >
       {children}

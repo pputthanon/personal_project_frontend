@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import OrderSumList from "../../features/order/OrderSumList";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { MdEdit } from "react-icons/md";
 
 import axios from "../../config/axios";
@@ -9,6 +10,7 @@ export default function AdminOrderItems() {
   const [allBook, setAllBook] = useState([]);
   const [data, setData] = useState([]);
   const { orderId } = useParams();
+  const [selectedStatus, setSelectedStatus] = useState("RECEIVING");
   useEffect(() => {
     axios
       .get(`/order/${orderId}`)
@@ -32,8 +34,19 @@ export default function AdminOrderItems() {
     return acc + sum;
   }, 0);
 
-  console.log(allBook);
-  console.log(data);
+  const handleStatusChange = async (event) => {
+    const newStatus = event.target.value;
+
+    try {
+      await axios.patch(`/admin/status/${orderId}`, {
+        newStatus,
+      });
+
+      toast.success("Status updated successfully!");
+    } catch (error) {
+      toast.error("Status updated fail");
+    }
+  };
 
   return (
     <div className="flex justify-center text-font">
@@ -55,13 +68,20 @@ export default function AdminOrderItems() {
             <div className="font-semibold">Transfer slip</div>
             <div className="w-2/3"> {data.transferSlip}</div>
           </div>
-          <div className="flex justify-between  items-center bg-blue-200 rounded-b-md p-5">
-            <div className="font-semibold">Status: {data.status}</div>
-            <div className="flex gap-2">
-              <div>Edit</div>
-              <div className="text-[1.5rem]">
-                <MdEdit />
-              </div>
+          <div className="flex justify-between  items-center bg-blue-200 rounded-b-md p-5 ">
+            <div className="flex gap-3">
+              <div className="font-semibold">Status:</div>
+              <select
+                name="selectedStatus"
+                value={selectedStatus}
+                onChange={handleStatusChange}
+              >
+                <option value="RECEIVING">RECEIVING</option>
+                <option value="PENDING">PENDING</option>
+                <option value="SHIPPING">SHIPPING</option>
+                <option value="REJECT">REJECT</option>
+                <option value="COMPLETE">COMPLETE</option>
+              </select>
             </div>
           </div>
         </div>

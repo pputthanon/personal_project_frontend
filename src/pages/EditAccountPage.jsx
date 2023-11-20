@@ -29,7 +29,7 @@ const validateUpdate = (input) => {
 
 export default function EditAccountPage() {
   const [error, setError] = useState({});
-  const { authUser, update, setAuthUser } = useAuth();
+  const { authUser, update } = useAuth();
   const [input, setInput] = useState(authUser);
   const navigate = useNavigate();
 

@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth";
 import { PenIcon } from "../icons";
 import { useEffect } from "react";
-import axios from "../config/axios";
-import { useState } from "react";
 
 export default function AccountPage() {
-  const { authUser } = useAuth();
-  console.log(authUser);
+  const { authUser, getUser } = useAuth();
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <div className="flex justify-center mt-10">

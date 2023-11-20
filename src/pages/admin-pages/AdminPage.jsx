@@ -5,20 +5,26 @@ import axios from "../../config/axios";
 
 export default function AdminPage() {
   const [allBook, setAllBook] = useState([]);
+  const [update, setUpdate] = useState(false);
   useEffect(() => {
     axios
       .get("/admin")
       .then((res) => {
-        setAllBook(res.data.allBooks);
+        return setAllBook(res.data.allBooks);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [update]);
 
   return (
     <div className="h-full flex justify-center ">
       <div className="">
         <Hero />
-        <BookList allBook={allBook} setAllBook={setAllBook} />
+        <BookList
+          allBook={allBook}
+          setAllBook={setAllBook}
+          update={update}
+          setUpdate={setUpdate}
+        />
       </div>
     </div>
   );
