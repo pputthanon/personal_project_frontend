@@ -1,3 +1,24 @@
+import { useEffect, useState } from "react";
+import OrderListContainer from "./OrderListContainer";
+import axios from "../../config/axios";
+
 export default function OrderListPage() {
-  return <div>OrderListPage</div>;
+  const [allOrder, setAllOrder] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/admin/orders")
+      .then((res) => {
+        setAllOrder(res.data.getAllOrders);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <div className="">
+      <div className="">
+        <OrderListContainer allOrder={allOrder} setAllOrder={setAllOrder} />
+      </div>
+    </div>
+  );
 }

@@ -15,11 +15,15 @@ const registerSchema = Joi.object({
     .trim()
     .required(),
   confirmPassword: Joi.string().valid(Joi.ref("password")).trim().required(),
+  address: Joi.string().required(),
+  mobile: Joi.string()
+    .pattern(/^[0-9]{10}$/)
+    .required(),
 });
 
 const validateRegister = (input) => {
   const { error } = registerSchema.validate(input, { abortEarly: false });
-  console.dir(error);
+
   if (error) {
     const result = error.details.reduce((acc, el) => {
       const { message, path } = el;
@@ -37,6 +41,8 @@ export default function RegisterForm() {
     email: "",
     password: "",
     confirmPassword: "",
+    address: "",
+    mobile: "",
   });
   const [error, setError] = useState({});
   const { register, authUser } = useAuth();
@@ -56,7 +62,6 @@ export default function RegisterForm() {
 
     setError({});
     register(input).catch((err) => {
-      console.log(err);
       toast.error(err.response?.data.message);
     });
 
@@ -83,7 +88,9 @@ export default function RegisterForm() {
             name="firstName"
             hasError={error.firstName}
           />
-          {error.firstName && <InputErrorMessage message={error.firstName} />}
+          {error.firstName && (
+            <InputErrorMessage message={"First name is required"} />
+          )}
         </div>
         <div className="m-1">
           <RegisterInput
@@ -93,7 +100,9 @@ export default function RegisterForm() {
             name="lastName"
             hasError={error.lastName}
           />
-          {error.lastName && <InputErrorMessage message={error.lastName} />}
+          {error.lastName && (
+            <InputErrorMessage message={"Last name is required"} />
+          )}
         </div>
         <div className="col-span-2 m-1">
           <RegisterInput
@@ -103,7 +112,11 @@ export default function RegisterForm() {
             name="email"
             hasError={error.email}
           />
-          {error.email && <InputErrorMessage message={error.email} />}
+          {error.email && (
+            <InputErrorMessage
+              message={"Email is required, should be unique"}
+            />
+          )}
         </div>
         <div className="col-span-2 m-1">
           <RegisterInput
@@ -114,7 +127,9 @@ export default function RegisterForm() {
             name="password"
             hasError={error.password}
           />
-          {error.password && <InputErrorMessage message={error.password} />}
+          {error.password && (
+            <InputErrorMessage message={"Password is required"} />
+          )}
         </div>
         <div className="col-span-2 m-1">
           <RegisterInput
@@ -128,6 +143,28 @@ export default function RegisterForm() {
           {error.confirmPassword && (
             <InputErrorMessage message={error.confirmPassword} />
           )}
+        </div>
+        <div className="col-span-2 m-1">
+          <RegisterInput
+            placeholder="Address"
+            value={input.address}
+            onChange={handleChangeInput}
+            name="address"
+            hasError={error.address}
+          />
+          {error.address && (
+            <InputErrorMessage message={"Address is required"} />
+          )}
+        </div>
+        <div className="col-span-2 m-1">
+          <RegisterInput
+            placeholder="Mobile"
+            value={input.mobile}
+            onChange={handleChangeInput}
+            name="mobile"
+            hasError={error.mobile}
+          />
+          {error.mobile && <InputErrorMessage message={"Mobile is required"} />}
         </div>
         <div className="flex justify-center items-center col-span-full">
           <button className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg px-20 py-2 font-semibold text-xl mt-4 text-gray-800">

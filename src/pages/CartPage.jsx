@@ -36,7 +36,7 @@ export default function CartPage() {
           setAllBook(res.data.getBook);
         })
         .catch((err) => console.log(err));
-      setCheckUpdateCart(false); // set state to false
+      setCheckUpdateCart(false);
     }
   }, [checkUpdateCart]); // when state changed trigger useEffect
 

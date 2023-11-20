@@ -19,6 +19,8 @@ import OrderListPage from "../pages/admin-pages/OrderListPage";
 import { useAuth } from "../hooks/use-auth";
 import { useMemo } from "react";
 import OrderItemPage from "../pages/OrderItemPage";
+import CreateBookPage from "../pages/admin-pages/CreateBookPage";
+import AdminOrderItems from "../pages/admin-pages/AdminOrderItems";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +32,10 @@ const router = createBrowserRouter([
     ),
 
     children: [
-      { element: <AdminPage />, path: "" },
-      // { path: "/orders", element: <OrderListPage /> },
+      { path: "", element: <AdminPage /> },
+      { path: "/admin/create", element: <CreateBookPage /> },
+      { path: "/admin/orders", element: <OrderListPage /> },
+      { path: "/admin/orderItems/:orderId", element: <AdminOrderItems /> },
     ],
   },
   {
@@ -50,18 +54,6 @@ const router = createBrowserRouter([
       { path: "account/payment-inform", element: <PaymentPage /> },
       { path: "checkout", element: <CheckoutPage /> },
       { path: "order/orderItems/:orderId", element: <OrderItemPage /> },
-      // {
-      //   path: "/admin",
-      //   element: (
-      //     <AdminAuthenticated>
-      //       <AdminLayout />
-      //     </AdminAuthenticated>
-      //   ),
-      //   children: [
-      //     { element: <AdminPage />, index: true },
-      //     // { path: "/orders", element: <OrderListPage /> },
-      //   ],
-      // },
     ],
   },
   {

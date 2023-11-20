@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/use-auth";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "../config/axios";
 import OrderSumList from "../features/order/OrderSumList";
 import PaymentPage from "./PaymentPage";
@@ -33,6 +34,7 @@ export default function CheckoutPage() {
 
       formData.append("userId", authUser.id);
       await axios.post("/order", formData);
+      toast.success("Your Order is a Success! 🎉");
     } catch (err) {
       console.log(err);
     }
