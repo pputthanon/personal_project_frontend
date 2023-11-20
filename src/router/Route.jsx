@@ -21,6 +21,7 @@ import { useMemo } from "react";
 import OrderItemPage from "../pages/OrderItemPage";
 import CreateBookPage from "../pages/admin-pages/CreateBookPage";
 import AdminOrderItems from "../pages/admin-pages/AdminOrderItems";
+import EditBookPage from "../pages/admin-pages/EditBookPage";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       { path: "/admin/create", element: <CreateBookPage /> },
       { path: "/admin/orders", element: <OrderListPage /> },
       { path: "/admin/orderItems/:orderId", element: <AdminOrderItems /> },
+      { path: "/admin/edit/:productId", element: <EditBookPage /> },
     ],
   },
   {

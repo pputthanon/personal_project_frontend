@@ -39,6 +39,7 @@ export default function AuthContextProvider({ children }) {
     removeAccessToken();
     setAuthUser(null);
   };
+
   const getUser = async () => {
     try {
       const res = await axios.get("/auth/me");

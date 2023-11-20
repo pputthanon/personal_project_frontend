@@ -29,7 +29,7 @@ const validateUpdate = (input) => {
 
 export default function EditAccountPage() {
   const [error, setError] = useState({});
-  const { authUser, update } = useAuth();
+  const { authUser, update, getUser } = useAuth();
   const [input, setInput] = useState(authUser);
   const navigate = useNavigate();
 
@@ -49,6 +49,7 @@ export default function EditAccountPage() {
     update(input).catch((err) => {
       toast.error(err.response?.data.message);
     });
+    getUser();
     {
       input ? toast.success("Your account has been updated!") : null;
     }

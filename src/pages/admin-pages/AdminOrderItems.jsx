@@ -2,8 +2,6 @@ import { useParams } from "react-router-dom";
 import OrderSumList from "../../features/order/OrderSumList";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { MdEdit } from "react-icons/md";
-
 import axios from "../../config/axios";
 
 export default function AdminOrderItems() {
