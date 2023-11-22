@@ -4,7 +4,6 @@ import { useAuth } from "../hooks/use-auth";
 export default function AdminHeader() {
   const { logout, authUser } = useAuth();
   const navigate = useNavigate();
-  console.log(authUser);
   return (
     <header className=" grid grid-cols-2 py-2 border-b z-30 sticky top-0 bg-white text-header">
       <div className="flex justify-normal items-center ml-4">

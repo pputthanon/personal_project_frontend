@@ -16,7 +16,6 @@ export default function OrdersPage() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(allOrder);
   return (
     <div className="">
       <OrderList allOrder={allOrder} setAllOrder={setAllOrder} />

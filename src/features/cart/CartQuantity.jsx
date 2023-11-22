@@ -5,14 +5,12 @@ import { useCart } from "../../hooks/use-cart";
 
 export default function CartQuantity({ bookObj }) {
   const addBookCart = async (id) => {
-    console.log(id);
     setAmount((amount) => amount + 1);
     await axios.patch(`/cart/add/${id}`);
     setCheckUpdateCart(true); // when cart updated set state to true
   };
 
   const removeBookCart = async (id) => {
-    console.log(id);
     setAmount((amount) => amount - 1);
     await axios.patch(`/cart/remove/${id}`);
     setCheckUpdateCart(true); // when cart updated set state to true

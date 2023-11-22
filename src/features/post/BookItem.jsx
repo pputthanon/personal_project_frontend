@@ -8,6 +8,7 @@ import axios from "../../config/axios";
 import BookContent from "./BookContent";
 import BookImage from "./BookImage";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function BookItem({ bookObj, update, setUpdate }) {
   const { authUser } = useAuth();
@@ -38,11 +39,13 @@ export default function BookItem({ bookObj, update, setUpdate }) {
           </button>
         ) : (
           <div className=" flex items-center gap-4">
-            <div className="text-[1rem] text-purple-950">
-              <button>
-                <FaPenToSquare />
-              </button>
-            </div>
+            <Link to={`/admin/edit/${bookObj.id}`}>
+              <div className="text-[1rem] text-purple-950">
+                <button>
+                  <FaPenToSquare />
+                </button>
+              </div>
+            </Link>
             <div className="text-[1rem] text-purple-950">
               <button onClick={() => deleteBook(bookObj.id)}>
                 <ImBin2 />
