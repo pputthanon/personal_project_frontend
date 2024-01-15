@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 export default function OrderList({ allOrder, setAllOrder }) {
   const { pathname } = useLocation();
   return (
-    <div className="flex justify-center mt-10">
-      <div className="w-2/3 bg-white rounded-lg">
+    <div className="flex justify-center mt-10 ">
+      <div className="w-2/3 ">
         {allOrder?.map((el) => (
           <Link
             key={el.id}

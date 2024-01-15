@@ -21,7 +21,7 @@ export default function HomePage() {
   // set data => Array Book
   // pass props => Array Book
   // console.log(allBook);
-  const s = allBook.filter((item) => item.status === "ava");
+
   return (
     <div className="h-full flex justify-center ">
       <div className="">

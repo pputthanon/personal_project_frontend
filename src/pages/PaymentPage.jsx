@@ -1,6 +1,4 @@
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "../config/axios";
+import { useRef } from "react";
 
 export default function PaymentPage({ setFile }) {
   const input = useRef(null);

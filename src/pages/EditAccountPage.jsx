@@ -2,11 +2,10 @@ import Joi from "joi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../hooks/use-auth";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import InputErrorMessage from "../features/auth/InputErrorMessage";
 import InputForm from "../components/InputForm";
-import { useEffect } from "react";
 
 const updateSchema = Joi.object({
   firstName: Joi.string().trim(),
@@ -142,10 +141,6 @@ export default function EditAccountPage() {
           <button className="bg-gradient-to-r from-[#AEB1CD] to-[#DEC5D5] rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800">
             Save
           </button>
-
-          {/* <button className="bg-amber-500 rounded-lg px-10 py-1 font-semibold text-xl mt-4 text-gray-800">
-            Back to profile
-          </button> */}
         </div>
       </form>
     </div>
