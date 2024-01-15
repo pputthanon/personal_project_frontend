@@ -15,10 +15,8 @@ export default function OrderListPage() {
   }, []);
 
   return (
-    <div className="">
-      <div className="">
-        <OrderListContainer allOrder={allOrder} setAllOrder={setAllOrder} />
-      </div>
+    <div className="flex justify-center">
+      <OrderListContainer allOrder={allOrder} setAllOrder={setAllOrder} />
     </div>
   );
 }
