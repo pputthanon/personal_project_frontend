@@ -63,7 +63,7 @@ export default function CheckoutPage() {
 
       <div className="flex justify-center mt-10">
         <div className="w-2/3 flex justify-end ">
-          <Link to="/account/order-history">
+          <Link to="/homepage">
             <button
               className="border p-2 bg-purple-300 rounded-xl font-semibold"
               onClick={sendDataToBackend}

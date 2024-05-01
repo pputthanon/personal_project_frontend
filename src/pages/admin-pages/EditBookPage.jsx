@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Joi from "joi";
 import axios from "../../config/axios";
 import RegisterInput from "../../features/auth/RegisterInput";
 import { toast } from "react-toastify";
 
 export default function EditBookPage() {
-  const [product, setProduct] = useState(null);
   const [input, setInput] = useState({
     name: "",
     author: "",
     price: "",
     categoryId: "",
   });
-  const [file, setFile] = useState(input?.image || null);
+
+  const [file, setFile] = useState(input?.image);
   const [error, setError] = useState({});
   const { productId } = useParams();
   const productData = async (productId) => {
@@ -44,7 +43,10 @@ export default function EditBookPage() {
       formData.append("author", input.author);
       formData.append("price", input.price);
       formData.append("categoryId", input.categoryId);
-      formData.append("image", file);
+      if (file) {
+        formData.append("image", file);
+      }
+
       await axios.patch(`/admin/edit/${productId}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",

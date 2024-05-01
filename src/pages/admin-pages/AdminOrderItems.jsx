@@ -64,7 +64,8 @@ export default function AdminOrderItems() {
         <div className="mt-5">
           <div className="bg-white rounded-t-md p-5">
             <div className="font-semibold">Transfer slip</div>
-            <div className="w-2/3"> {data.transferSlip}</div>
+            {/* <div className="w-2/3"> {data.transferSlip}</div> */}
+            <img src={data.transferSlip} alt="image" height={300} />
           </div>
           <div className="flex justify-between  items-center bg-blue-200 rounded-b-md p-5 ">
             <div className="flex gap-3">
